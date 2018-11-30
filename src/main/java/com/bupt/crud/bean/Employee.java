@@ -1,12 +1,20 @@
 package com.bupt.crud.bean;
 
+import org.hibernate.validator.constraints.Email;
+
+import javax.validation.constraints.Pattern;
+
 public class Employee {
     private Integer empId;
 
+    @Pattern(regexp = "(^[a-zA-Z0-9_]{5,20}$)|(^[\\u4e00-\\u9fa5]{2,8}$)",message = "姓名必须是2-8位中文或者5-20位英文数字组合")
     private String empName;
 
     private String gender;
 
+    /*@Pattern(regexp = "^\\w+((-\\w+)|(\\.\\w+))*\\@[A-Za-z0-9]+((\\.|-)[A-Za-z0-9]+)*\\.[A-Za-z0-9]+$"
+            , message = "邮箱格式不对")*/
+    @Email
     private String email;
 
     private Integer dId;
